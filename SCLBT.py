@@ -14,11 +14,11 @@ from recbole.model.loss import BPRLoss, EmbLoss
 from recbole.utils import InputType
 
 
-class PCG(GeneralRecommender):
+class SCLBT(GeneralRecommender):
     input_type = InputType.PAIRWISE
 
     def __init__(self, config, dataset):
-        super(PCG, self).__init__(config, dataset)
+        super(SCLBT, self).__init__(config, dataset)
 
         self.interaction_matrix = dataset.inter_matrix(form='coo').astype(np.float32)
 

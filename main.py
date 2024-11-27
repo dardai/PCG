@@ -6,15 +6,15 @@ from recbole.config import Config
 from recbole.data import create_dataset, data_preparation
 from recbole.utils import init_logger, init_seed, set_color
 
-from pcg import PCG
-from trainer import PCGTrainer
+from SCLBT import SCLBT
+from trainer import SCLBTTrainer
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
 
 def run_single_model(args):
     config = Config(
-        model=PCG,
+        model=SCLBT,
         dataset=args.dataset,
         config_file_list=args.config_file_list
     )
@@ -29,10 +29,10 @@ def run_single_model(args):
 
     train_data, valid_data, test_data = data_preparation(config, dataset)
 
-    model = PCG(config, train_data.dataset).to(config['device'])
+    model = SCLBT(config, train_data.dataset).to(config['device'])
     logger.info(model)
 
-    trainer = PCGTrainer(config, model)
+    trainer = SCLBTTrainer(config, model)
 
     best_valid_score, best_valid_result = trainer.fit(
         train_data, valid_data, saved=True, show_progress=config['show_progress']
@@ -53,7 +53,7 @@ if __name__ == '__main__':
 
     args.config_file_list = [
         'properties/overall.yaml',
-        'properties/PCG.yaml',
+        'properties/SCLBT.yaml',
     ]
 
     if args.dataset in ['chrome', 'core', 'firefox', 'ml-1m']:
