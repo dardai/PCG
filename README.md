@@ -6,8 +6,7 @@ Implementation of SCL-BT, a Structural Contrastive Learning-based Bug Triaging f
 ### Main File Contents
 
 - `/bug_Augmentation/preprocess.py` includes text cleaning, tokenization and parts for bug report preprocessing.
-- `/bug_Augmentation/augment_main.py` implement prototype clustering-based augmentation.
-- `SCL-BT.py` is the joint model of GCF backbone and SSL module
+- `SCL-BT.py` is the joint model of GCN backbone and SSL module
 - `main.py` is the training and validating progresses for SCL-BT.
 
 ### How to use
